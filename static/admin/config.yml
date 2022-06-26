@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: galeevssg/galeev.shop
+  repo: galeevssg/galeev.blog
   branch: main
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
