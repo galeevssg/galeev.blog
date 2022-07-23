@@ -1,0 +1,281 @@
+@import 'functions';
+
+// Color system
+$white: #fff !default;
+$black: #000 !default;
+
+$primary-1: #3772FF;
+$primary-2: #3772FF;
+$primary-3: #3772FF;
+$primary-4: #3772FF;
+
+$secondary-1: #4BC9F0;
+$secondary-2: #E4D7CF;
+$secondary-3: #FFD166;
+$secondary-4: #CDB4DB;
+
+$neutrals-1: #141416;
+$neutrals-2: #23262F;
+$neutrals-3: #353945;
+$neutrals-4: #777E90;
+$neutrals-5: #B1B5C3;
+$neutrals-6: #E6E8EC;
+$neutrals-7: #F4F5F6;
+$neutrals-8: #FCFCFD;
+
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio: 4.5 !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $black !default;
+$color-contrast-light: $white !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (('<', '%3c'), ('>', '%3e'), ('#', '%23'), ('(', '%28'), (')', '%29')) !default;
+
+// Options
+//
+$enable-gradients: false !default;
+$enable-grid-classes: true !default;
+$enable-pointer-cursor-for-buttons: true !default;
+$enable-print-styles: true !default;
+$enable-smooth-scroll: true !default;
+$enable-button-pointers: true !default;
+$enable-grid-classes: true !default;
+$enable-container-classes: true !default;
+$enable-cssgrid: true !default;
+$include-column-box-sizing: true !default;
+$enable-negative-margins: true !default;
+
+$variable-prefix: fun- !default;
+
+// Spacing
+//
+$spacer: 4px !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 1,
+    ),
+    2: (
+      $spacer * 2,
+    ),
+    3: (
+      $spacer * 3,
+    ),
+    4: (
+      $spacer * 4,
+    ),
+    5: (
+      $spacer * 5,
+    ),
+    6: (
+      $spacer * 6,
+    ),
+    7: (
+      $spacer * 7,
+    ),
+    8: (
+      $spacer * 8,
+    ),
+    9: (
+      $spacer * 9,
+    ),
+    10: (
+      $spacer * 10,
+    ),
+  ),
+  $spacers
+);
+
+$spacers-xxl: (4, 8, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 88, 96, 120, 140, 200);
+$spacers-lg: (4, 4, 8, 8, 12, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 52, 60, 64, 80, 92, 132);
+$spacers-xs: (4, 4, 4, 8, 8, 12, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 60, 70, 100);
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $neutrals-8 !default;
+$body-color: $neutrals-2 !default;
+$text-color: $neutrals-2 !default;
+$text-muted: $neutrals-5 !default;
+$body-text-align: null !default;
+
+// Links
+//
+// Style anchor elements.
+$link-color: $primary-1 !default;
+$link-decoration: none !default;
+$link-hover-color: $secondary-1 !default;
+$link-hover-decoration: none !default;
+$link-active-color: $primary-1 !default;
+
+$paragraph-margin-bottom: 0 !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 32px !default;
+$grid-row-columns: 6 !default;
+
+$gutters: $spacers !default;
+$container-padding-x: $grid-gutter-width !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 1px,
+  md: calc(316px + $grid-gutter-width),
+  // phone
+  lg: calc(720px + $grid-gutter-width),
+  // tablet
+  xl: calc(960px + $grid-gutter-width),
+  // laptop
+  xxl: calc(1216px + $grid-gutter-width) // desktop,,,,
+) !default;
+
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 100%,
+  md: calc(316px + $grid-gutter-width),
+  lg: calc(720px + $grid-gutter-width),
+  xl: calc(960px + $grid-gutter-width),
+  xxl: calc(1216px + $grid-gutter-width),
+) !default;
+
+@include _assert-ascending($container-max-widths, '$container-max-widths');
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius: 3px !default;
+$border-width: 1px !default;
+$border-color: $neutrals-5 !default;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: 'Montserrat', sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  monospace !default;
+$font-family-base: var(--#{$variable-prefix}font-sans-serif) !default;
+$font-family-code: var(--#{$variable-prefix}font-monospace) !default;
+
+// $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
+// $font-size-base affects the font size of the body text
+$font-size-root: null !default;
+$font-size-base: 16px !default;
+$font-weight-base: 500 !default;
+$line-height-base: calc(24 / 16) !default;
+
+$headings-margin-bottom: 0 !default;
+$headings-font-family: 'Nunito' !default;
+$headings-font-style: null !default;
+$headings-font-weight: 700 !default;
+$headings-small-font-weight: 500 !default;
+$headings-line-height: 1 !default;
+$headings-color: null !default;
+
+$dt-font-weight: 700 !default;
+$small-font-size: 0.875em !default;
+
+$sub-sup-font-size: 0.75em !default;
+
+// Code
+
+$code-font-size: $small-font-size !default;
+$code-color: null !default;
+
+$kbd-padding-y: 4px !default;
+$kbd-padding-x: 8px !default;
+$kbd-font-size: $code-font-size !default;
+$kbd-color: $white !default;
+$kbd-bg: null !default;
+
+$pre-color: null !default;
+
+$hr-border-color: #e0dada !default;
+$hr-border-width: $border-width !default;
+$hr-margin-y: 0 !default;
+
+//== Inputs
+//
+//##
+$input-border-color: $neutrals-4 !default;
+$input-text-color: $text-color !default;
+$input-background-color: $white !default;
+$input-border-radius: 112px !default;
+$input-placeholder-color: $neutrals-4 !default;
+$input-autofill-background-color: $neutrals-5 !default;
+
+$ui-checkbox-size: 18px;
+$ui-radio-size: 18px;
+
+//== Tables
+// TODO: should be added
+
+$hr-margin-y: 0 !default;
+$hr-color: inherit !default;
+$hr-bg-color: currentColor !default;
+$hr-border-width: 0 !default;
+$hr-height: $border-width !default;
+$hr-opacity: 1 !default;
+
+// Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-modal-backdrop: 1040 !default;
+$zindex-modal: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;
+$zindex-loading: 1080 !default;
+
+// Utilities
+
+$displays: none, inline, inline-block, block, table, inline-table, table-row, table-cell, flex, inline-flex !default;
+$overflows: auto, hidden !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+
+// Test curves https://googlesamples.github.io/web-fundamentals/fundamentals/design-and-ux/animations/curve-playground.html
+
+//=== Easing curves https://material.io/guidelines/motion/duration-easing.html#duration-easing-natural-easing-curves
+$standard-curve: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$deceleration-curve: cubic-bezier(0, 0, 0.2, 1) !default;
+$acceleration-curve: cubic-bezier(0.4, 0, 1, 1) !default;
+$sharp-curve: cubic-bezier(0.4, 0, 0.6, 1) !default;
+
+$screen-transition-curve: cubic-bezier(0.465, 0.183, 0.153, 0.946) !default;
+
+//=== Movement in and out of screen bounds https://material.io/guidelines/motion/movement.html#movement-movement-within-screen-bounds
+$entering-screen: 0.225s $deceleration-curve !default;
+$permanently-leaving-screen: 0.195s $acceleration-curve !default;
+$temporarily-leaving-screen: 0.3s $sharp-curve !default;
+$temporarily-leaving-screen-return: 0.3s $deceleration-curve !default;
+$relative-movement: 0.3s $standard-curve !default;
+$relative-movement-desktop: 0.4s $standard-curve !default;
+$relative-movement-mobile: 0.3s $standard-curve !default;

@@ -1,0 +1,78 @@
+// stylelint-disable declaration-no-important
+
+// Margin and Padding
+// right == end
+// left == start
+// For example, instead of --ml: 3 for margin-left, use --ms: 3.
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    // --s-<abbr>, i.e. --s-m(t|e|b|s), --s-p(t|e|b|s)
+    @each $prop, $abbrev in (margin: s-m, padding: s-p) {
+      [style*='--#{$abbrev}#{$infix}:'] {
+        #{$prop}: calc(#{$spacer} * var(--#{$abbrev}#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}t#{$infix}:'] {
+        #{$prop}-top: calc(#{$spacer} * var(--#{$abbrev}t#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}e#{$infix}:'] {
+        #{$prop}-right: calc(#{$spacer} * var(--#{$abbrev}e#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}b#{$infix}:'] {
+        #{$prop}-bottom: calc(#{$spacer} * var(--#{$abbrev}b#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}s#{$infix}:'] {
+        #{$prop}-left: calc(#{$spacer} * var(--#{$abbrev}s#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}x#{$infix}:'] {
+        #{$prop}-left: calc(#{$spacer} * var(--#{$abbrev}x#{$infix}, 0));
+        #{$prop}-right: calc(#{$spacer} * var(--#{$abbrev}x#{$infix}, 0));
+      }
+      [style*='--#{$abbrev}y#{$infix}:'] {
+        #{$prop}-top: calc(#{$spacer} * var(--#{$abbrev}y#{$infix}, 0));
+        #{$prop}-bottom: calc(#{$spacer} * var(--#{$abbrev}y#{$infix}, 0));
+      }
+    }
+
+    // --<abbr> - any length, i.e. --m(t|e|b|s), --p(t|e|b|s)
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      [style*='--#{$abbrev}#{$infix}:'] {
+        #{$prop}: var(--#{$abbrev}#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}t#{$infix}:'] {
+        #{$prop}-top: var(--#{$abbrev}t#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}e#{$infix}:'] {
+        #{$prop}-right: var(--#{$abbrev}e#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}b#{$infix}:'] {
+        #{$prop}-bottom: var(--#{$abbrev}b#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}s#{$infix}:'] {
+        #{$prop}-left: var(--#{$abbrev}s#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}x#{$infix}:'] {
+        #{$prop}-left: var(--#{$abbrev}x#{$infix}, 0);
+        #{$prop}-right: var(--#{$abbrev}x#{$infix}, 0);
+      }
+      [style*='--#{$abbrev}y#{$infix}:'] {
+        #{$prop}-top: var(--#{$abbrev}y#{$infix}, 0);
+        #{$prop}-bottom: var(--#{$abbrev}y#{$infix}, 0);
+      }
+    }
+  }
+}
+
+// @each $spacer in $spacers-xxl {
+//   @each $prop, $abbrev in (margin: r-m, padding: r-p) {
+//     @each $side,
+//       $abbr in ("": "", top: "t", right: "r", bottom: "b", left: "l")
+//     {
+//       .#{$abbrev}#{$abbr}-#{$spacer} {
+//         @include rsc(margin, $spacer);
+//       }
+//     }
+//   }
+// }

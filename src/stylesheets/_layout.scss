@@ -1,0 +1,28 @@
+:root {
+  --header-height: 60px;
+  @include media-breakpoint-up('xl') {
+    --header-height: 68px;
+  }
+  @include media-breakpoint-up('xxl') {
+    --header-height: 80px;
+  }
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header,
+.footer {
+  flex-shrink: 0;
+  min-width: 0;
+}
+.content {
+  flex-grow: 1;
+  min-width: 0;
+}
+.header-fixed-spacer {
+  height: var(--header-height);
+}

@@ -1,0 +1,10 @@
+hr {
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-top: 1px solid $hr-color;
+}
+
+.hr-transparent {
+  border-top-color: transparent;
+}

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Layout from "../../components/Layout";
-import BlogRoll from "../../components/BlogRoll";
+import Layout from "../../components/common/Layout";
+import BlogRoll from "../../components/common/BlogRoll";
 
 export default class BlogIndexPage extends React.Component {
   render() {
@@ -22,7 +22,7 @@ export default class BlogIndexPage extends React.Component {
               padding: "1rem",
             }}
           >
-            Latest Stories
+            Каталог шаблонов
           </h1>
         </div>
         <section className="section">

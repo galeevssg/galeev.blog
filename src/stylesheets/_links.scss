@@ -1,0 +1,60 @@
+.link-interactive-filled {
+  font-weight: 600;
+  padding: 6px 8px 6px 16px;
+  display: inline-block;
+  vertical-align: middle;
+  background: var(--background, $primary-2);
+  border-radius: 200px;
+  position: relative;
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color, $white);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 200px;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.link-interactive-path-dash {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  transform-origin: 50% 50%;
+
+  [class^='link-interactive']:hover &,
+  [class^='link-interactive']:focus & {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.link-interactive-path-angle {
+  transform: translateX(-20%);
+  transition: transform 0.15s ease-in-out;
+
+  [class^='link-interactive']:hover &,
+  [class^='link-interactive']:focus & {
+    transform: translateX(0);
+  }
+}

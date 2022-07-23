@@ -1,0 +1,41 @@
+@for $radius from 0 through 36 {
+  .border-radius-#{$radius} {
+    border-radius: #{$radius}px;
+  }
+
+  .border-top-radius-#{$radius} {
+    border-top-left-radius: #{$radius}px;
+    border-top-right-radius: #{$radius}px;
+  }
+
+  .border-bottom-radius-#{$radius} {
+    border-bottom-left-radius: #{$radius}px;
+    border-bottom-right-radius: #{$radius}px;
+  }
+
+  .border-left-radius-#{$radius} {
+    border-top-left-radius: #{$radius}px;
+    border-bottom-left-radius: #{$radius}px;
+  }
+
+  .border-right-radius-#{$radius} {
+    border-top-right-radius: #{$radius}px;
+    border-bottom-right-radius: #{$radius}px;
+  }
+
+  .border-top-left-radius-#{$radius} {
+    border-top-left-radius: #{$radius}px;
+  }
+
+  .border-top-right-radius-#{$radius} {
+    border-top-right-radius: #{$radius}px;
+  }
+
+  .border-bottom-left-radius-#{$radius} {
+    border-bottom-left-radius: #{$radius}px;
+  }
+
+  .border-bottom-right-radius-#{$radius} {
+    border-bottom-right-radius: #{$radius}px;
+  }
+}

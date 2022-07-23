@@ -1,0 +1,197 @@
+.body-1 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.body-2 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.caption-1 {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.caption-2 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.hairline-1 {
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.hairline-2 {
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+.button-1 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.button-2 {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+// TODO: `font-size-` and `line-height-` classes should be removed
+// font sizes
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @for $size from 0 through 70 {
+      .font-size#{$infix}-#{$size} {
+        @include font-size(#{$size}px);
+      }
+      // TODO: Always set your line-heights relative (in em or unitless) to prevent interline issues with font sizes.
+      .line-height#{$infix}-#{$size} {
+        @include rfs(#{$size}px, line-height);
+      }
+    }
+
+    @each $prop in (font-size, line-height) {
+      [style*="--#{$prop}#{$infix}:"] {
+        #{$prop}: var(--#{$prop}#{$infix});
+      }
+    }
+  }
+}
+
+// font weights
+@for $font-weight from 200 through 900 {
+  @if $font-weight % 100 == 0 {
+    .font-weight-#{$font-weight} {
+      font-weight: #{$font-weight};
+    }
+  }
+}
+
+// line clamps
+@for $lines from 1 through 3 {
+  .text-line-clamp-#{$lines} {
+    @include line-clamp($lines);
+  }
+}
+
+// Responsive alignment
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-start {
+      text-align: start;
+    }
+    .text#{$infix}-end {
+      text-align: end;
+    }
+    .text#{$infix}-center {
+      text-align: center;
+    }
+    .text#{$infix}-justify {
+      text-align: justify;
+    }
+  }
+}
+
+// Transformation
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// wraps
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-wrap {
+  white-space: normal;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  // Non standard for webkit
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.text-break-word {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+}
+
+.text-wrap-normal {
+  white-space: normal;
+}
+
+.text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.text-pre-line {
+  white-space: pre-line;
+}
+
+.text-select-all {
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+.hyphens-auto {
+  hyphens: auto;
+}
+
+// Decorations
+.text-nodecor {
+  &,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.text-decor {
+  text-decoration: underline;
+}
+
+html a.text-decor:hover,
+html .cursor-pointer.text-decor:hover {
+  text-decoration: none;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.text-noselect {
+  user-select: none;
+}

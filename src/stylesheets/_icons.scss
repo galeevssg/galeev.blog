@@ -1,0 +1,83 @@
+// svg icons alternative
+
+.icon-slot {
+  position: relative;
+
+  &:before {
+    content: '\200a';
+  }
+
+  @for $size from 10 through 40 {
+    &-#{$size} {
+      width: #{$size}px;
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: -0.1625em;
+  width: 1em;
+  height: 1em;
+}
+
+.icon-fill {
+  display: inline-block;
+  vertical-align: -0.1625em;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.icon-stroke {
+  display: inline-block;
+  vertical-align: -0.1625em;
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+}
+
+.icon-spin {
+  animation: icon-spin 2s infinite linear;
+}
+
+@include keyframes(icon-spin) {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.icon-rotate-45 {
+  transform: rotate(45deg);
+}
+
+.icon-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.icon-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.icon-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.icon-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.icon-flip-vertical {
+  transform: scale(1, -1);
+}
+
+:root .icon-rotate-90,
+:root .icon-rotate-180,
+:root .icon-rotate-270,
+:root .icon-flip-horizontal,
+:root .icon-flip-vertical {
+  filter: none;
+}

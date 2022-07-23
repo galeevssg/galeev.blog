@@ -1,0 +1,37 @@
+//
+// Cursor utilities
+//
+
+// Helpers
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-grab {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+
+  &:active {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+}

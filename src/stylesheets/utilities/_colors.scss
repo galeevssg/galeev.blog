@@ -1,0 +1,17 @@
+@each $prop in ('color', 'background') {
+  @each $key,
+    $var
+      in (
+        '': '--#{$prop}',
+        'visited': '--#{$prop}-visited',
+        'hover': '--#{$prop}-hover',
+        'focus': '--#{$prop}-focus',
+        'active': '--#{$prop}-active'
+      )
+  {
+    $pseudo: if($key == '', '', ':#{$key}');
+    [style*='#{$var}:']#{$pseudo} {
+      #{$prop}: var(#{$var});
+    }
+  }
+}

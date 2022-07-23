@@ -1,0 +1,7 @@
+.hover-visible-el {
+  visibility: hidden;
+
+  .hover-visible:hover & {
+    visibility: visible;
+  }
+}

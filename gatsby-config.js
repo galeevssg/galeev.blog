@@ -1,17 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: "Galeev Blog",
+    title: "Galeev Shop",
     description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
+      "Galeev shop - интернет магазин шаблонов на gatsby js. Купить шаблоны на gatsby js",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sass",
     {
-      resolve: "gatsby-plugin-sass",
+      resolve: 'gatsby-omni-font-loader',
+
       options: {
-        sassOptions: {
-          indentedSyntax: true,
-        },
+        mode: 'render-blocking',
+        preconnect: ['https://fonts.gstatic.com', 'https://use.typekit.net/'],
+        scope: 'html',
+        web: [
+          {
+            name: `Nunito`,
+            file: 'https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
+          },
+          {
+            name: `Montserrat`,
+            file: `https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap`,
+          },
+        ],
       },
     },
     {
@@ -77,7 +89,7 @@ module.exports = {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"], // applies purging only on the bulma css file
+        purgeOnly: ["/bootstrap.scss"], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
     "gatsby-plugin-netlify", // make sure to keep it last in the array

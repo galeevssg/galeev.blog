@@ -1,0 +1,23 @@
+// Converts desktop spacings for tablet & mobile
+// Usage example `p { @include rsc(margin-bottom, 20) }`
+
+@function responsive-spacer-converter($value) {
+  $index: index($spacers-xxl, $value);
+  @if ($index == null) {
+    @warn "Value `#{$value}` does not exists in `$spacers-xxl` list. Check _variables.scss for available values!";
+    @return (xxl: $value, lg: $value, xs: $value);
+  }
+  @return (xxl: $value, lg: nth($spacers-lg, $index), xs: nth($spacers-xs, $index));
+}
+
+@mixin rsc($prop, $value) {
+  #{$prop}: #{map-get(responsive-spacer-converter($value), xs)}px;
+
+  @include media-breakpoint-up('lg') {
+    #{$prop}: #{map-get(responsive-spacer-converter($value), lg)}px;
+  }
+
+  @include media-breakpoint-up('xl') {
+    #{$prop}: #{map-get(responsive-spacer-converter($value), xxl)}px;
+  }
+}

@@ -1,0 +1,41 @@
+//
+// Columns flow layout
+// --------------------------------------------------
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @for $i from 1 through $grid-columns {
+      .columns#{$infix}-#{$i} {
+        -webkit-column-count: $i;
+        -moz-column-count: $i;
+        column-count: $i;
+        -webkit-column-gap: var(--column-gap#{$infix}, $grid-gutter-width);
+        -moz-column-gap: var(--column-gap#{$infix}, $grid-gutter-width);
+        column-gap: var(--column-gap#{$infix}, $grid-gutter-width);
+
+        .column-item {
+          // no margins collapse inside columns
+          display: inline-block;
+          vertical-align: middle;
+          width: 100%;
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        .column-block-item {
+          vertical-align: top;
+          width: 100%;
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        li.column-item {
+          margin-bottom: 1px;
+        }
+      }
+    }
+  }
+}

@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
-import Layout from "../components/Layout";
-import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll";
-import FullWidthImage from "../components/FullWidthImage";
+import Layout from "../components/common/Layout";
+import Features from "../components/common/Features";
+import BlogRoll from "../components/common/BlogRoll";
+import Hero from "../components/common/hero";
+import Discounts from "../components/common/discounts/discounts";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
@@ -22,50 +23,33 @@ export const IndexPageTemplate = ({
 
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+      <Hero title={title} subheading={subheading} />
       <section className="section section--gradient">
         <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  <div className="content">
-                    <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
-                    </div>
-                    <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
-                    </div>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-12">
-                      <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
-                      </h3>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                  <Features gridItems={intro.blurbs} />
-                  <div className="columns">
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/products">
-                        See all products
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest stories
-                    </h3>
-                    <BlogRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <h2 className="text-center" style={{ marginBottom: 20 }}>
+            {mainpitch.title}
+          </h2>
+          <div className="text-center">{mainpitch.description}</div>
+          {/* {heading}
+          {description} */}
+          <Discounts />
+          <Features gridItems={intro.blurbs} />
+          <div className="columns">
+            <div className="column is-12 has-text-centered">
+              <Link className="btn" to="/products">
+                See all products
+              </Link>
+            </div>
+          </div>
+          <div className="column is-12">
+            <h3 className="has-text-weight-semibold is-size-2">
+              Latest stories
+            </h3>
+            <BlogRoll />
+            <div className="column is-12 has-text-centered">
+              <Link className="btn btn-default" to="/catalog">
+                Read more
+              </Link>
             </div>
           </div>
         </div>

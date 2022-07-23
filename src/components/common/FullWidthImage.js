@@ -14,7 +14,7 @@ export default function FullWidthImage(props) {
   return (
     <React.Fragment>
       <div
-        className="margin-top-0"
+        className="margin-top-0 p-rel"
         style={{
           display: "grid",
           alignItems: "center",
@@ -56,48 +56,10 @@ export default function FullWidthImage(props) {
           />
         )}
         {(title || subheading) && (
-          <div
-            style={{
-              // By using the same grid area for both, they are stacked on top of each other
-              gridArea: "1/1",
-              position: "relative",
-              // This centers the other elements inside the hero component
-              placeItems: "center",
-              display: "grid",
-            }}
-          >
+          <div className="p-abs" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             {/* Any content here will be centered in the component */}
-            {title && (
-              <h1
-                className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-                style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25em",
-                }}
-              >
-                {title}
-              </h1>
-            )}
-            {subheading && (
-              <h3
-                className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25rem",
-                  marginTop: "0.5rem",
-                }}
-              >
-                {subheading}
-              </h3>
-            )}
+            {title && <h1 className="text-center">{title}</h1>}
+            {subheading && <h3 className="text-center" style={{color: '$neutrals-4'  }}>{subheading}</h3>}
           </div>
         )}
       </div>

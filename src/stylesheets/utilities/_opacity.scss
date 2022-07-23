@@ -1,0 +1,16 @@
+@for $i from 0 through 100 {
+  @if $i % 10 == 0 {
+    .opacity-#{$i} {
+      opacity: calc($i/100);
+    }
+
+    @if $i != 0 {
+      a[href].opacity-#{$i},
+      .cursor-pointer.opacity-#{$i} {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

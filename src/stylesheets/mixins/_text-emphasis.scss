@@ -1,0 +1,23 @@
+// Typography
+
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+  a#{$parent},
+  .cursor-pointer#{$parent} {
+    &:hover {
+      color: darken($color, 10%);
+    }
+  }
+}
+
+@mixin text-emphasis-variant-hover($parent, $color, $color-hover) {
+  #{$parent} {
+    color: $color;
+
+    &:hover {
+      color: $color-hover;
+    }
+  }
+}

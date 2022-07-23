@@ -2,17 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import Layout from "../components/Layout";
-import Features from "../components/Features";
-import Testimonials from "../components/Testimonials";
-import Pricing from "../components/Pricing";
-import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
-import FullWidthImage from "../components/FullWidthImage";
+import Layout from "../components/common/Layout";
+import Features from "../components/common/Features";
+import Testimonials from "../components/common/Testimonials";
+import Pricing from "../components/common/Pricing";
+import PreviewCompatibleImage from "../components/common/PreviewCompatibleImage";
+import Hero from "../components/common/hero";
 
 // eslint-disable-next-line
 export const ProductPageTemplate = ({
   image,
   title,
+  subheading,
   heading,
   description,
   intro,
@@ -26,7 +27,8 @@ export const ProductPageTemplate = ({
 
   return (
     <div className="content">
-      <FullWidthImage img={heroImage} title={title} />
+      {/* <FullWidthImage img={heroImage} title={title} /> */}
+      <Hero title={title} subheading={subheading} />
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -76,7 +78,6 @@ export const ProductPageTemplate = ({
           </div>
         </div>
       </section>
-      <FullWidthImage img={fullWidthImage} imgPosition={"bottom"} />
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
